@@ -1,0 +1,15 @@
+div.titulo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div.titulo>hr{
+    color: white;
+    border-style: dotted;
+    border-width: 1px;
+    margin: 4em;
+    width: 40%;
+    text-align: center;
+}
