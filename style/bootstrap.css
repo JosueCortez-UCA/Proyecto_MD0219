@@ -4872,6 +4872,12 @@ input[type="button"].btn-block {
   margin: 16px;
 }
 
+@media (min-width: 1024px) {
+  .card {
+    width: 750px;
+  }
+}
+
 .card > hr {
   margin-right: 0;
   margin-left: 0;
