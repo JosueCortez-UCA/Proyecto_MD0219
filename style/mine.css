@@ -22,3 +22,8 @@ div.titulo>hr{
     width: 80%;
     text-align: center;
 }
+
+.nope {
+    color: red;
+    text-align: center;
+}
