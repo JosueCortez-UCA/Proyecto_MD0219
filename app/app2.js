@@ -10,30 +10,23 @@ class Letra{
 }
 
 
-let calcularCoeficiente_app2 = (palabra) => {
+let calcularArregloLetrasRepetidas = (palabra) => {
     let arrayLetras = [];
     let arraySumas = [];
-    let arraySumasAux = [];
     let contador = 0;
-    let total = 0;
-    for (let i = 0; i < palabra.length; i++) {
-        const letra = new Letra(palabra[i],0);
+    
+    let palabraOriginal = palabra;
+    let palabraTratada = convertirPalabra(palabra);
+    console.log(palabraTratada);
+    
+    for (let i = 0; i < palabraTratada.length; i++) {
+        const letra = new Letra(palabraTratada[i],0);
        arrayLetras.push(letra);
         
     }
-    // for (let i = 0; i < palabra.length; i++) {
-    //     switch (arrayLetras[i].nombre) {
-    //         case "a": case "A": case "á": case "Á":
-    //             arrayLetras[i].valor++;
-    //             break;
-        
-    //         default:
-    //             break;
-    //     }
-        
-    // }
-    for (let i = 0; i < palabra.length; i++) {
-        for (let j = 0; j < palabra.length; j++) {
+   
+    for (let i = 0; i < palabraTratada.length; i++) {
+        for (let j = 0; j < palabraTratada.length; j++) {
             if(arrayLetras[i].nombre == arrayLetras[j].nombre){
                 contador++;
                 arrayLetras[i].valor++;
@@ -45,8 +38,8 @@ let calcularCoeficiente_app2 = (palabra) => {
         
         contador = 0;
     }
-    for (let i = 0; i < palabra.length; i++) {
-        for (let j = 0; j < palabra.length; j++) {
+    for (let i = 0; i < palabraTratada.length; i++) {
+        for (let j = 0; j < palabraTratada.length; j++) {
             if(arrayLetras[i].nombre == arrayLetras[j].nombre){
                 contador++;
                
@@ -67,20 +60,27 @@ let calcularCoeficiente_app2 = (palabra) => {
                 contador++;
                 arraySumas.pop();
             }
-
         }
-        if(contador>1){
-            arraySumasAux.push(arrayLetras[i])
-        }
+       
         contador=0;
     }
     
     console.log(arrayLetras);
     console.log(arraySumas);
-    console.log(arraySumasAux);
-    imprimirDatos(palabra);
+  
+    imprimirDatos(palabraOriginal);
 }
 
+
+
+
+//Esta funcion sirve para convertir la palabra a minusculas y eliminar las tildes
+// para que sea más facil de que el usuario ingrese alguna palabra 
+let convertirPalabra = (palabra) =>{
+    palabra = palabra.toLowerCase();
+
+    return palabra.normalize('NFD').replace(/[\u0300-\u036f]/g,"");//es descompuesto en su equivalencia de caracter base
+}
 
 
 let calcularFactorial = (numero) =>{
@@ -112,7 +112,7 @@ let imprimirDatos = (palabra) =>{
 
 
 btn_calcular_app2.addEventListener("click", ()=>{
-    calcularCoeficiente_app2(palabraPermutacion.value);
+    calcularArregloLetrasRepetidas(palabraPermutacion.value);
 });
 
 
