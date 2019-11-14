@@ -7,6 +7,7 @@ class Letra{
         this.nombre = nombre;
         this.valor = valor;
     }
+    
 }
 
 
@@ -17,7 +18,7 @@ let calcularArregloLetrasRepetidas = (palabra) => {
     
     let palabraOriginal = palabra;
     let palabraTratada = convertirPalabra(palabra);
-    console.log(palabraTratada);
+    
     
     for (let i = 0; i < palabraTratada.length; i++) {
         const letra = new Letra(palabraTratada[i],0);
@@ -30,7 +31,6 @@ let calcularArregloLetrasRepetidas = (palabra) => {
             if(arrayLetras[i].nombre == arrayLetras[j].nombre){
                 contador++;
                 arrayLetras[i].valor++;
-                // console.log(arrayLetras[i].nombre + " == "+ arrayLetras[j].nombre);
             }
            
         }
@@ -42,21 +42,17 @@ let calcularArregloLetrasRepetidas = (palabra) => {
         for (let j = 0; j < palabraTratada.length; j++) {
             if(arrayLetras[i].nombre == arrayLetras[j].nombre){
                 contador++;
-               
             }
-           
         }
-        
         if(contador>1){
             arraySumas.push(arrayLetras[i])
         }
-        
         contador = 0;
     }
     for (let i = 0; i < arraySumas.length; i++) {
         for (let j = 0; j < arraySumas.length; j++) {
             
-            if((arraySumas[i].nombre == arraySumas[j].nombre) && arraySumas[i].valor > 1){
+            if((arraySumas[i].nombre == arraySumas[j].nombre)){
                 contador++;
                 arraySumas.pop();
             }
@@ -64,13 +60,28 @@ let calcularArregloLetrasRepetidas = (palabra) => {
        
         contador=0;
     }
-    
     console.log(arrayLetras);
     console.log(arraySumas);
-  
-    imprimirDatos(palabraOriginal);
+    
+    imprimirDatos(palabraTratada,arraySumas, calcularPermutaciones(arraySumas,palabraTratada));
 }
 
+let calcularPermutaciones = (arrayLetras , palabra) => {
+    
+    let numerador = calcularFactorial(palabra.length);
+    let denominador = 1;
+    let denominadorArray =[];
+    let totalPermutaciones = 0;
+    for (let i = 0; i < arrayLetras.length; i++) {
+
+        denominador *= calcularFactorial(arrayLetras[i].valor);
+      
+    }
+    
+   
+    return totalPermutaciones = numerador/denominador;
+    
+}
 
 
 
@@ -93,16 +104,31 @@ let calcularFactorial = (numero) =>{
 
 
 
-let imprimirDatos = (palabra) =>{
-    let impresion = document.createElement("div");
+let imprimirDatos = (palabra, arrayLetras, total) =>{
     
+    let impresion = document.createElement("div");
+    let denominadorDatos = "";
+    let letrasRepetidas ="";
 
+    for (let i = 0; i < arrayLetras.length; i++) {
+       if(i+1 == arrayLetras.length){
+        denominadorDatos += arrayLetras[i].valor + "!";
+       }else{
+        denominadorDatos += arrayLetras[i].valor + "!x";
+       }
+    }
+    for (let i = 0; i < arrayLetras.length; i++) {
+      letrasRepetidas += arrayLetras[i].nombre +"="+ arrayLetras[i].valor + "<br/>";
+    }
     impresion.className = "resultado";
     impresion.innerHTML = `
         <hr class="linea_bonita">
         <h4>
-            Resultado <br/>
-            <small class="text-muted">Total de Permutaciones con Repetición : ${palabra} </small>
+            Resultado <br/><br/>
+            <small class="text-muted">${letrasRepetidas} <br/></small>
+            <small class="text-muted">Total de Permutaciones con Repetición : ${palabra.length} !/</small>
+            <small class="text-muted">${denominadorDatos} = </small>
+            <p class="text-success"> ${total}</p>
         </h4>
         
     `;
