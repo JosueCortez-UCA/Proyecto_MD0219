@@ -33,11 +33,10 @@
 
         <!-- App 2 -->
         <div class="card mb-3">
-            <h3 class="card-header">Card header</h3>
+            <h3 class="card-header">Permutaciones con Repetición</h3>
             <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">Calculá las posibles permutaciones de una palabra haciendo uso de la formula de Permutaciones con Repetición</p>
+                <a href="https://www.sangakoo.com/es/temas/permutaciones-con-repeticion#:~:targetText=Permutaciones%20con%20repetici%C3%B3n,el%20n%C3%BAmero%20de%20veces%20indicado." class="card-subtitle text-muted">Permutaciones con Repetición</a>
             </div>
             <div class="card-footer text-muted">
                     <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#App2">Usar</button>
@@ -103,13 +102,18 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">App 2</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Permutaciones con Repetición</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <div class="form-group">
+                        <label class="col-form-label" for="potenciaBinomio">Palabra a calcular?</label>
+                        <input type="text" class="form-control" placeholder="Ingrese una Palabra" id="palabraPermutacion">
+                        <br>
+                        <button id="app2-btn" type="button" class="btn btn-primary btn-lg btn-block">Calcular</button>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
