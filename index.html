@@ -19,6 +19,7 @@
     
     <!-- Presentacion de las aplicaciones -->
     <div class="row">
+        <!-- App 1 -->
         <div class="card mb-3">
             <h3 class="card-header">Coeficientes de un binomio</h3>
             <div class="card-body">
@@ -26,10 +27,11 @@
                 <a href="https://es.wikipedia.org/wiki/Tri%C3%A1ngulo_de_Pascal" class="card-subtitle text-muted">Triangulo de pascal</a>
             </div>
             <div class="card-footer text-muted">
-                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalLong">Usar</button>
+                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#App1">Usar</button>
             </div>
         </div>
 
+        <!-- App 2 -->
         <div class="card mb-3">
             <h3 class="card-header">Card header</h3>
             <div class="card-body">
@@ -38,10 +40,11 @@
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
             <div class="card-footer text-muted">
-                <button type="button" class="btn btn-outline-danger">Usar</button>
+                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#App2">Usar</button>
             </div>
         </div>
 
+        <!-- App 3 -->
         <div class="card mb-3">
             <h3 class="card-header">Card header</h3>
             <div class="card-body">
@@ -50,10 +53,11 @@
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
             <div class="card-footer text-muted">
-                <button type="button" class="btn btn-outline-danger">Usar</button>
+                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#App3">Usar</button>
             </div>
         </div>
 
+        <!-- App 4 -->
         <div class="card mb-3">
             <h3 class="card-header">Card header</h3>
             <div class="card-body">
@@ -62,32 +66,96 @@
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
             <div class="card-footer text-muted">
-                <button type="button" class="btn btn-outline-danger">Usar</button>
+                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#App4">Usar</button>
             </div>
         </div>
     </div>
 
     <!-- Aplicaciones en ventanas flotantes -->
-    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <!-- App 1 -->
+    <div class="modal fade" id="App1" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Coeficientes de un binomio</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-form-label" for="potenciaBinomio">Potencia del binomio?</label>
+                            <input type="text" class="form-control" placeholder="Digite un número entero" id="potenciaBinomio">
+                            <br>
+                            <button type="button" class="btn btn-primary btn-lg btn-block">Calcular</button>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- App 2 -->
+    <div class="modal fade" id="App2" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">App 2</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     ...
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
     </div>
-    
+
+    <!-- App 3 -->
+    <div class="modal fade" id="App3" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">App 3</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- App 4 -->
+    <div class="modal fade" id="App4" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">App 4</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="script/jquery.js"></script>
 <script src="script/bootstrap.js"></script>
