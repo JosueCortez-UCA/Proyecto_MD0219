@@ -1,10 +1,12 @@
 let coeficiente = document.querySelector("#potenciaBinomio");
 let btn_calcular = document.querySelector("#app1-btn");
-let div_impresion = document.querySelector("#App1 div.modal-body");
+let div_impresion = document.querySelector("#App1 div.impresion");
+let bandera = false;
 
-let calcularCoeficiente = (coe, numeros, estado) => {
+let calcularCoeficiente = (estado, coe, numeros) => {
     let impresion = document.createElement("div");
     impresion.className = "resultado";
+    impresion.id = coe;
 
     if (estado == 1) {
         impresion.innerHTML = `
@@ -36,18 +38,26 @@ let calcularCoeficiente = (coe, numeros, estado) => {
         `;
     }
 
-    div_impresion.appendChild(impresion);
+
+    if (bandera) {
+        div_impresion.replaceChild(impresion, impresion_vieja);
+    } else {
+        div_impresion.appendChild(impresion);
+        bandera = true;
+    }
+
+    impresion_vieja = document.getElementById(coe);
 }
 
 btn_calcular.addEventListener("click", () => {
     let numero = coeficiente.value;
     let resultado = [];
 
-    isNaN(numero);
-    console.log(numero)
-    if (numero == 0) {
-        resultado.push(1);
-        calcularCoeficiente(numero, resultado, 1);
+    if (numero.length == 0) {
+        calcularCoeficiente();
+    }
+    else if (numero == 0) {
+        calcularCoeficiente(1, numero);
     }
     else if (numero/numero) {
         for (let i = 0; i <= numero; i++) {
@@ -56,10 +66,10 @@ btn_calcular.addEventListener("click", () => {
             );
         }
 
-        calcularCoeficiente(numero, resultado, 2);
+        calcularCoeficiente(2, numero, resultado);
     }
     else {
-        calcularCoeficiente(numero, resultado, 3);
+        calcularCoeficiente();
     }
 });
 
