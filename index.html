@@ -10,13 +10,14 @@
     <title>Discreta II</title>
 </head>
 <body>
+    <!-- Titulo -->
     <div class="titulo">
         <hr>
         <h1>Math Tools</h1>
         <hr>
     </div>
-
     
+    <!-- Presentacion de las aplicaciones -->
     <div class="row">
         <div class="card mb-3">
             <h3 class="card-header">Coeficientes de un binomio</h3>
@@ -25,7 +26,7 @@
                 <a href="https://es.wikipedia.org/wiki/Tri%C3%A1ngulo_de_Pascal" class="card-subtitle text-muted">Triangulo de pascal</a>
             </div>
             <div class="card-footer text-muted">
-                <button type="button" class="btn btn-outline-danger">Usar</button>
+                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalLong">Usar</button>
             </div>
         </div>
 
@@ -65,7 +66,30 @@
             </div>
         </div>
     </div>
+
+    <!-- Aplicaciones en ventanas flotantes -->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
 </body>
-<script src=""></script>
+<script src="script/jquery.js"></script>
+<script src="script/bootstrap.js"></script>
+<script src="script/main.js"></script>
 </html>
