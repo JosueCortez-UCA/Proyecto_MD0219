@@ -15,6 +15,7 @@ let calcularArregloLetrasRepetidas = (palabra) => {
     let arrayLetras = [];
     let arraySumas = [];
     let contador = 0;
+    let contadorAux = 0; //para saber si no hay repeticion
     
     let palabraOriginal = palabra;
     let palabraTratada = convertirPalabra(palabra);
@@ -38,32 +39,47 @@ let calcularArregloLetrasRepetidas = (palabra) => {
         
         contador = 0;
     }
-    for (let i = 0; i < palabraTratada.length; i++) {
-        for (let j = 0; j < palabraTratada.length; j++) {
-            if(arrayLetras[i].nombre == arrayLetras[j].nombre){
-                contador++;
-            }
+
+    for (let i = 0; i < arrayLetras.length; i++) {
+        if(arrayLetras[i].valor == 1){
+            contadorAux++;
         }
-        if(contador>1){
-            arraySumas.push(arrayLetras[i])
-        }
-        contador = 0;
+        
     }
-    for (let i = 0; i < arraySumas.length; i++) {
-        for (let j = 0; j < arraySumas.length; j++) {
-            
-            if((arraySumas[i].nombre == arraySumas[j].nombre)){
-                contador++;
-                arraySumas.pop();
+    //validacion cuando no se repite ni una letra
+    if(contadorAux == arrayLetras.length){
+        imprimirDatos(palabraTratada,arrayLetras, calcularPermutaciones(arrayLetras,palabraTratada));
+    }else{
+        for (let i = 0; i < palabraTratada.length; i++) {
+            for (let j = 0; j < palabraTratada.length; j++) {
+                if(arrayLetras[i].nombre == arrayLetras[j].nombre){
+                    contador++;
+                }
             }
+            if(contador>1){
+                arraySumas.push(arrayLetras[i])
+            }
+            contador = 0;
         }
-       
-        contador=0;
+        for (let i = 0; i < arraySumas.length; i++) {
+            for (let j = 0; j < arraySumas.length; j++) {
+                
+                if((arraySumas[i].nombre == arraySumas[j].nombre)){
+                    contador++;
+                    arraySumas.pop();
+                }
+            }
+           
+            contador=0;
+        }
+
+        imprimirDatos(palabraTratada,arraySumas, calcularPermutaciones(arraySumas,palabraTratada));
     }
-    console.log(arrayLetras);
-    console.log(arraySumas);
+
     
-    imprimirDatos(palabraTratada,arraySumas, calcularPermutaciones(arraySumas,palabraTratada));
+    
+    
+    
 }
 
 let calcularPermutaciones = (arrayLetras , palabra) => {
