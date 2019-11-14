@@ -63,13 +63,16 @@ let calcularCoeficiente_app2 = (palabra) => {
     for (let i = 0; i < arraySumas.length; i++) {
         for (let j = 0; j < arraySumas.length; j++) {
             
-            if(arraySumas[i].nombre == arraySumas[j].nombre){
+            if((arraySumas[i].nombre == arraySumas[j].nombre) && arraySumas[i].valor > 1){
                 contador++;
-               
+                arraySumas.pop();
             }
-            
+
         }
-        console.log(contador);
+        if(contador>1){
+            arraySumasAux.push(arrayLetras[i])
+        }
+        contador=0;
     }
     
     console.log(arrayLetras);
