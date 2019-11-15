@@ -17,8 +17,8 @@ let calcularArregloLetrasRepetidas = (palabra) => {
     let contador = 0;
     let contadorAux = 0; //para saber si no hay repeticion
     
-    let palabraOriginal = palabra;
-    let palabraTratada = convertirPalabra(palabra);
+     let palabraTratada = convertirPalabra(palabra);
+    
     
     
     for (let i = 0; i < palabraTratada.length; i++) {
@@ -26,7 +26,7 @@ let calcularArregloLetrasRepetidas = (palabra) => {
        arrayLetras.push(letra);
         
     }
-   
+    
     for (let i = 0; i < palabraTratada.length; i++) {
         for (let j = 0; j < palabraTratada.length; j++) {
             if(arrayLetras[i].nombre == arrayLetras[j].nombre){
@@ -61,18 +61,18 @@ let calcularArregloLetrasRepetidas = (palabra) => {
             }
             contador = 0;
         }
+        
         for (let i = 0; i < arraySumas.length; i++) {
-            for (let j = 0; j < arraySumas.length; j++) {
+            for (let j = 0; j < arraySumas.length-1; j++) {
                 
                 if((arraySumas[i].nombre == arraySumas[j].nombre)){
-                    contador++;
-                    arraySumas.pop();
+                   arraySumas.pop(); 
                 }
             }
            
             contador=0;
         }
-
+       
         imprimirDatos(palabraTratada,arraySumas, calcularPermutaciones(arraySumas,palabraTratada));
     }
 
@@ -104,9 +104,21 @@ let calcularPermutaciones = (arrayLetras , palabra) => {
 //Esta funcion sirve para convertir la palabra a minusculas y eliminar las tildes
 // para que sea más facil de que el usuario ingrese alguna palabra 
 let convertirPalabra = (palabra) =>{
+    
+    let palabraNueva = "";
+    
     palabra = palabra.toLowerCase();
 
-    return palabra.normalize('NFD').replace(/[\u0300-\u036f]/g,"");//es descompuesto en su equivalencia de caracter base
+    for (let i = 0; i < palabra.length; i++) {
+        if(palabra[i] != " "){
+            palabraNueva += palabra[i];
+        }
+    }
+
+    let palabraLimpia = new String(palabraNueva);
+    
+   
+    return palabraLimpia.normalize('NFD').replace(/[\u0300-\u036f]/g,"");//es descompuesto en su equivalencia de caracter base
 }
 
 
@@ -121,11 +133,13 @@ let calcularFactorial = (numero) =>{
 
 
 let imprimirDatos = (palabra, arrayLetras, total) =>{
-    
+    limpiarResultado();
     let impresion = document.createElement("div");
     let denominadorDatos = "";
     let letrasRepetidas ="";
+    
 
+   
     for (let i = 0; i < arrayLetras.length; i++) {
        if(i+1 == arrayLetras.length){
         denominadorDatos += arrayLetras[i].valor + "!";
@@ -136,6 +150,7 @@ let imprimirDatos = (palabra, arrayLetras, total) =>{
     for (let i = 0; i < arrayLetras.length; i++) {
       letrasRepetidas += arrayLetras[i].nombre +"="+ arrayLetras[i].valor + "<br/>";
     }
+    
     impresion.className = "resultado";
     impresion.innerHTML = `
         <hr class="linea_bonita">
@@ -150,13 +165,45 @@ let imprimirDatos = (palabra, arrayLetras, total) =>{
     `;
     
     div_impresion_app2.appendChild(impresion);
+   
 }
+
+let validarSoloLetras = (palabra) =>{
+    let numeros="0123456789";
+
+    for(i=0; i<palabra.length; i++){
+        if (numeros.indexOf(palabra.charAt(i),0)!=-1){
+            return 1;
+        }
+    }
+    return 0;
+    }
+
 
 
 btn_calcular_app2.addEventListener("click", ()=>{
-    calcularArregloLetrasRepetidas(palabraPermutacion.value);
+    const pattern = new RegExp('[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$', 'i');
+
+    if (!palabraPermutacion.value) {
+        
+        palabraPermutacion.value = "Error, dato vacío, ingrese una palabra.";
+        limpiarResultado();
+    }else if(!pattern.test(palabraPermutacion.value)){
+        
+        palabraPermutacion.value = "Error, solo se admiten letras";
+        limpiarResultado();
+        
+    }else{
+        
+        calcularArregloLetrasRepetidas(palabraPermutacion.value);
+    }
+   
 });
 
 
-
+let limpiarResultado = () =>{
+    if (div_impresion_app2.lastElementChild.className == "resultado") {
+        div_impresion_app2.removeChild(div_impresion_app2.lastElementChild);
+    }
+}
 
