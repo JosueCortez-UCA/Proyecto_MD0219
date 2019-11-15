@@ -182,21 +182,26 @@ let validarSoloLetras = (palabra) =>{
 
 
 btn_calcular_app2.addEventListener("click", ()=>{
-    const pattern = new RegExp('[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$', 'i');
+    let esValido = false;
+    const pattern = new RegExp('^[A-Z]+$', 'i');
 
-    if (!palabraPermutacion.value) {
+    
+   
+        if (!pattern.test(palabraPermutacion.value)) {
+            palabraPermutacion.placeholder = "Error, solo se admiten letras";
+            limpiarResultado();
+            
+            esValido = false;
+        }else{
+            esValido =true;
+        }
         
-        palabraPermutacion.value = "Error, dato vacío, ingrese una palabra.";
-        limpiarResultado();
-    }else if(!pattern.test(palabraPermutacion.value)){
-        
-        palabraPermutacion.value = "Error, solo se admiten letras";
-        limpiarResultado();
-        
-    }else{
-        
-        calcularArregloLetrasRepetidas(palabraPermutacion.value);
-    }
+        if (esValido) {
+            limpiarResultado();
+            calcularArregloLetrasRepetidas(palabraPermutacion.value);
+        }
+
+        esValido = false;
    
 });
 
