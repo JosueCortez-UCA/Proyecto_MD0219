@@ -14,6 +14,7 @@ class Letra{
 let calcularArregloLetrasRepetidas = (palabra) => {
     let arrayLetras = [];
     let arraySumas = [];
+    let arrayAux =[];
     let contador = 0;
     let contadorAux = 0; //para saber si no hay repeticion
     
@@ -39,7 +40,7 @@ let calcularArregloLetrasRepetidas = (palabra) => {
         
         contador = 0;
     }
-
+    
     for (let i = 0; i < arrayLetras.length; i++) {
         if(arrayLetras[i].valor == 1){
             contadorAux++;
@@ -48,38 +49,43 @@ let calcularArregloLetrasRepetidas = (palabra) => {
     }
     //validacion cuando no se repite ni una letra
     if(contadorAux == arrayLetras.length){
+        
         imprimirDatos(palabraTratada,arrayLetras, calcularPermutaciones(arrayLetras,palabraTratada));
     }else{
+
+        
+        
         for (let i = 0; i < palabraTratada.length; i++) {
             for (let j = 0; j < palabraTratada.length; j++) {
                 if(arrayLetras[i].nombre == arrayLetras[j].nombre){
                     contador++;
+                    
                 }
             }
+            
             if(contador>1){
-                arraySumas.push(arrayLetras[i])
+               arraySumas.push(arrayLetras[i]);
             }
             contador = 0;
         }
+
+        let objetosFinales = [...new Set(arraySumas.map(x => x.nombre))];
+       
+        for (let i = 0; i < objetosFinales.length; i++) {
+           arrayAux.push(new Letra(objetosFinales[i]));
+        }
         
-        for (let i = 0; i < arraySumas.length; i++) {
-            for (let j = 0; j < arraySumas.length-1; j++) {
-                
-                if((arraySumas[i].nombre == arraySumas[j].nombre)){
-                   arraySumas.pop(); 
+        for (let i = 0; i < arrayAux.length; i++) {
+            for (let j = 0; j < arraySumas.length; j++) {
+                if (arraySumas[j].nombre == arrayAux[i].nombre) {
+                    arrayAux[i].valor = arraySumas[i].valor;
                 }
             }
-           
-            contador=0;
-        }
-       
-        imprimirDatos(palabraTratada,arraySumas, calcularPermutaciones(arraySumas,palabraTratada));
+         }
+         
+        imprimirDatos(palabraTratada,arrayAux, calcularPermutaciones(arrayAux,palabraTratada));
     }
-
-    
-    
-    
-    
+  
 }
 
 let calcularPermutaciones = (arrayLetras , palabra) => {
@@ -168,38 +174,17 @@ let imprimirDatos = (palabra, arrayLetras, total) =>{
    
 }
 
-let validarSoloLetras = (palabra) =>{
-    let numeros="0123456789";
-
-    for(i=0; i<palabra.length; i++){
-        if (numeros.indexOf(palabra.charAt(i),0)!=-1){
-            return 1;
-        }
+ btn_calcular_app2.addEventListener("click", ()=>{
+     calcularArregloLetrasRepetidas(palabraPermutacion.value);
+ });
+$(palabraPermutacion).bind('keypress',(e) =>{
+    let regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
+    let tecla = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (!regex.test(tecla)) {
+        e.preventDefault();
+        return false;
     }
-    return 0;
-    }
-
-
-
-btn_calcular_app2.addEventListener("click", ()=>{
-    const pattern = new RegExp('[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$', 'i');
-
-    if (!palabraPermutacion.value) {
-        
-        palabraPermutacion.value = "Error, dato vacío, ingrese una palabra.";
-        limpiarResultado();
-    }else if(!pattern.test(palabraPermutacion.value)){
-        
-        palabraPermutacion.value = "Error, solo se admiten letras";
-        limpiarResultado();
-        
-    }else{
-        
-        calcularArregloLetrasRepetidas(palabraPermutacion.value);
-    }
-   
 });
-
 
 let limpiarResultado = () =>{
     if (div_impresion_app2.lastElementChild.className == "resultado") {
