@@ -175,30 +175,16 @@ let imprimirDatos = (palabra, arrayLetras, total) =>{
 }
 
  btn_calcular_app2.addEventListener("click", ()=>{
-     let esValido = false;
-
-        if (validarInput(palabraPermutacion)) {
-            palabraPermutacion.placeholder = "Error, solo se admiten letras";
-            limpiarResultado();
-            
-            esValido = false;
-        }else{
-            esValido =true;
-        }
-        
-        if (esValido) {
-            limpiarResultado();
-            calcularArregloLetrasRepetidas(palabraPermutacion.value);
-        }
-
-        esValido = false;
+     calcularArregloLetrasRepetidas(palabraPermutacion.value);
  });
-let validarInput = (objInput) =>{
-
-    const pattern = /[A-Za-z\sáéíóú]/;;
-    return $(objInput).val().match(pattern) ? true:false;
-
-}
+$(palabraPermutacion).bind('keypress',(e) =>{
+    let regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
+    let tecla = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (!regex.test(tecla)) {
+        e.preventDefault();
+        return false;
+    }
+});
 
 let limpiarResultado = () =>{
     if (div_impresion_app2.lastElementChild.className == "resultado") {
