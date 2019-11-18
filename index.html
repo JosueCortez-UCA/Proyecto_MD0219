@@ -126,13 +126,27 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">App 3</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Distribucion Binomial</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <form name="datos">
+                        n = <input id = "n" class="form-control-sm" type="text" name="n" size="3">
+                        <br>
+                        <br>
+                        p = <input id = "p" class="form-control-sm" type="text" name="p" size="3">
+                        <br>
+                        <br>
+                        k = <input id = "k" class="form-control-sm" type="text" name="k" size="3"><BR><BR><HR>
+                        <br>
+                        Probabilidad P(x=k) = <input class="form-control-sm" type="text" name="prob">
+                        <br>
+                        <br>
+                        <input class="btn btn-primary btn-lg btn-block"  type="button" value="Calcular" onClick="bin()">
+
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
