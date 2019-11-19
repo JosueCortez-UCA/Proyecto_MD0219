@@ -63,12 +63,3 @@ btn_calcular_app1.addEventListener("click", () => {
         calcularCoeficiente();
     }
 });
-
-function factorial (n) {
-	var total = 1; 
-    
-    for (let i = 1; i <= n; i++) {
-		total = total * i; 
-	}
-	return total; 
-};
