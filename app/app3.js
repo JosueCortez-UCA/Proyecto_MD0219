@@ -1,36 +1,57 @@
-let impresion_app3 = document.querySelector("#resultado_binomial");
+let btn_calcular_app3 = document.querySelector("#app3-btn");
+let div_impresion_app3 = document.querySelector("#App3 div.impresion");
 
-function bin(){
-    k = parseInt(document.datos.k.value);
-    n = parseInt(document.datos.n.value);
-    p = parseFloat(document.datos.p.value);
+// matriz
+let n_filas_matriz = document.querySelector("#n_filas_matriz");
+let n_columnas_matriz = document.querySelector("#n_columnas_matriz");
+// submatriz
+let n_filas_submatriz = document.querySelector("#n_filas_submatriz");
+let n_columnas_submatriz = document.querySelector("#n_columnas_submatriz");
+
+btn_calcular_app3.addEventListener("click", () => {
+    // respuestas
+    let filas;
+    let columnas;
     let resultado;
+    // valores
+    let filas_matriz = n_filas_matriz.value;
+    let columnas_matriz = n_columnas_matriz.value;
+    let filas_submatriz = n_filas_submatriz.value;
+    let columnas_submatriz = n_columnas_submatriz.value;
 
-    if((k/k) && (n/n) && (p/p)){
-        if((p >= 0 && p < 1)){
-            resultado = (factorial(n)/(factorial(n-k)*factorial(k))*Math.pow(p,k)*Math.pow(1-p,n-k)); 
-            calcularDistribucion(resultado);
-        }else{
-            alert("El valor de la probabilidad individual debe ser un decimal entre cero y 1");
-        }
-    }else{
-        alert("Debe ingresar numeros.");
+    if ((filas_matriz/filas_matriz) && (columnas_matriz/columnas_matriz) && (filas_submatriz/filas_submatriz) && (columnas_submatriz/columnas_submatriz)) {
+        filas = (
+            (factorial(filas_matriz))
+            /
+            ( (factorial(filas_submatriz)) * (factorial(filas_matriz-filas_submatriz)) )
+        );
+        columnas = (
+            (factorial(columnas_matriz))
+            /
+            ( (factorial(columnas_submatriz)) * (factorial(columnas_matriz-columnas_submatriz)) )
+        );
+
+        resultado = filas * columnas;
+
+        imprimir_app3(filas_submatriz, columnas_submatriz, resultado);
     }
-}
+    else {
+        alert("Debe ingresar numeros enteros");
+    }
+});
 
-let calcularDistribucion = (numero) => {
-    let resultado = Math.round(numero * 100);
+let imprimir_app3 = (filas_submatriz, columnas_submatriz, resultado) => {
+    let objeto_impresion = document.createElement("div");
+    objeto_impresion.className = "resultado";
+    objeto_impresion.id = "impresion_app3";
 
-    let impresion = document.createElement("div");
-    impresion.id = "ident_child";
-    impresion.innerHTML = `
+    objeto_impresion.innerHTML = `
         <hr class="linea_bonita">
         <h4>
             Resultado <br/>
-            <small class="text-muted">La probabilidad de que el suceso ocurra es de: ${resultado}% </small>
+            <small class="text-muted">Se pueden obtener ${resultado} submatrices de orden ${filas_submatriz} x ${columnas_submatriz}</small>
         </h4>
-            
     `;
 
-    impresion_app3.replaceChild(impresion, document.getElementById("ident_child"));
-}
+    div_impresion_app3.replaceChild(objeto_impresion, document.getElementById("impresion_app3"));
+};
