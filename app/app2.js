@@ -175,9 +175,9 @@ btn_calcular_app2.addEventListener("click", () => {
     calcularArregloLetrasRepetidas(palabraPermutacion.value);
 });
 $(palabraPermutacion).bind('keypress', (e) => {
-    let regex = new RegExp("/^[a-zA-ZáéíóúÁÉÍÓÚ\b]+$/");
+    let regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ\b]+$");
     let tecla = String.fromCharCode(!e.charCode ? e.which : e.charCode);
-    if (!regex.test(tecla)) {
+    if (!regex.test(tecla) || (e.KeyCode == 46)) {
         e.preventDefault();
         return false;
     }
