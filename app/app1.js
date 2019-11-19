@@ -1,36 +1,35 @@
-let coeficiente = document.querySelector("#potenciaBinomio");
-let btn_calcular = document.querySelector("#app1-btn");
-let div_impresion = document.querySelector("#App1 div.impresion");
-let bandera = false;
+let coeficiente_app1 = document.querySelector("#potenciaBinomio");
+let btn_calcular_app1 = document.querySelector("#app1-btn");
+let div_impresion_app1 = document.querySelector("#App1 div.impresion");
 
-let calcularCoeficiente = (estado, coe, numeros) => {
-    let impresion = document.createElement("div");
-    impresion.className = "resultado";
-    impresion.id = coe;
+let calcularCoeficiente = (estado, coeficiente, numeros) => {
+    let objeto_impresion = document.createElement("div");
+    objeto_impresion.className = "resultado";
+    objeto_impresion.id = "impresion_app1";
 
     if (estado == 1) {
-        impresion.innerHTML = `
+        objeto_impresion.innerHTML = `
             <hr class="linea_bonita">
             <h4>
                 Resultado <br/>
-                <small class="text-muted">Coeficientes de un binomio elevado a la ${coe} </small>
+                <small class="text-muted">Coeficientes de un binomio elevado a la ${coeficiente} </small>
             </h4>
                 
             <p class="text-success"> El binomio elevado a la 0 es 1 </p>
         `;
     }
     else if (estado == 2) {
-        impresion.innerHTML = `
+        objeto_impresion.innerHTML = `
             <hr class="linea_bonita">
             <h4>
                 Resultado <br/>
-                <small class="text-muted">Coeficientes de un binomio elevado a la ${coe} </small>
+                <small class="text-muted">Coeficientes de un binomio elevado a la ${coeficiente} </small>
             </h4>
                 
             <p class="text-success"> ${numeros} </p>
         `;
     } else {
-        impresion.innerHTML = `
+        objeto_impresion.innerHTML = `
             <hr class="linea_bonita">
             <h4 class="nope">
                 ERROR!
@@ -38,19 +37,11 @@ let calcularCoeficiente = (estado, coe, numeros) => {
         `;
     }
 
-
-    if (bandera) {
-        div_impresion.replaceChild(impresion, impresion_vieja);
-    } else {
-        div_impresion.appendChild(impresion);
-        bandera = true;
-    }
-
-    impresion_vieja = document.getElementById(coe);
+    div_impresion_app1.replaceChild(objeto_impresion, document.getElementById("impresion_app1"));
 }
 
-btn_calcular.addEventListener("click", () => {
-    let numero = coeficiente.value;
+btn_calcular_app1.addEventListener("click", () => {
+    let numero = coeficiente_app1.value;
     let resultado = [];
 
     if (numero.length == 0) {
