@@ -98,12 +98,9 @@ let calcularArregloLetrasRepetidas = (palabra) => {
 let calcularPermutaciones = (arrayLetras, palabra) => {
     let numerador = factorial(palabra.length);
     let denominador = 1;
-    let denominadorArray = [];
     let totalPermutaciones = 0;
     for (let i = 0; i < arrayLetras.length; i++) {
-
         denominador *= factorial(arrayLetras[i].valor);
-
     }
 
     return totalPermutaciones = numerador / denominador;
