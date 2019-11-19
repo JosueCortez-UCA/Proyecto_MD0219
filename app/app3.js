@@ -1,16 +1,4 @@
 let impresion_app3 = document.querySelector("#resultado_binomial");
-let flag = false;
-let impresion_vieja_app3;
-
-
-function fact(n){
-    f=1;
-    
-    for (i=1;i <n+1; i++){
-        f=f*i 
-    };
-    return f 
-}
 
 function bin(){
     k = parseInt(document.datos.k.value);
@@ -20,7 +8,7 @@ function bin(){
 
     if((k/k) && (n/n) && (p/p)){
         if((p >= 0 && p < 1)){
-            resultado = (fact(n)/(fact(n-k)*fact(k))*Math.pow(p,k)*Math.pow(1-p,n-k)); 
+            resultado = (factorial(n)/(factorial(n-k)*factorial(k))*Math.pow(p,k)*Math.pow(1-p,n-k)); 
             calcularDistribucion(resultado);
         }else{
             alert("El valor de la probabilidad individual debe ser un decimal entre cero y 1");
@@ -33,8 +21,9 @@ function bin(){
 }
 
 let calcularDistribucion = (numero) => {
-    let impresion = document.createElement("div");
     let resultado = Math.round(numero * 100);
+    
+    let impresion = document.createElement("div");
     impresion.id = "ident_child";
     impresion.innerHTML = `
         <hr class="linea_bonita">
@@ -45,15 +34,5 @@ let calcularDistribucion = (numero) => {
             
     `;
 
-    if (flag) {
-        impresion_app3.replaceChild(impresion, impresion_vieja_app3);
-    } else {
-        impresion_app3.appendChild(impresion);
-        flag = true;
-    }
-
-    impresion_vieja_app3 = document.getElementById("ident_child");
-    
-
-
+    impresion_app3.replaceChild(impresion, document.getElementById("ident_child"));
 }
