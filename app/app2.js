@@ -96,20 +96,17 @@ let calcularArregloLetrasRepetidas = (palabra) => {
 }
 
 let calcularPermutaciones = (arrayLetras, palabra) => {
-
-    let numerador = calcularFactorial(palabra.length);
+    let numerador = factorial(palabra.length);
     let denominador = 1;
     let denominadorArray = [];
     let totalPermutaciones = 0;
     for (let i = 0; i < arrayLetras.length; i++) {
 
-        denominador *= calcularFactorial(arrayLetras[i].valor);
+        denominador *= factorial(arrayLetras[i].valor);
 
     }
 
-
     return totalPermutaciones = numerador / denominador;
-
 }
 
 
@@ -133,16 +130,6 @@ let convertirPalabra = (palabra) => {
 
     return palabraLimpia.normalize('NFD').replace(/[\u0300-\u036f]/g, ""); //es descompuesto en su equivalencia de caracter base
 }
-
-
-let calcularFactorial = (numero) => {
-    if (numero == 0) {
-        return 1;
-    } else {
-        return numero * calcularFactorial(numero - 1);
-    }
-}
-
 
 
 let imprimirDatos = (palabra, arrayLetras, total) => {
