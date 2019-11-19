@@ -180,8 +180,6 @@ $(palabraPermutacion).bind('keypress', (e) => {
     if (!regex.test(tecla)) {
         e.preventDefault();
         return false;
-    }else if(e.KeyCode == 46){
-        return;
     }
 });
 
