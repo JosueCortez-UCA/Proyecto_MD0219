@@ -41,3 +41,7 @@ div.titulo>hr{
 #form_app3 input[type="text"] {
     width: 45%;
 }
+
+.centrar {
+    text-align: center;
+}

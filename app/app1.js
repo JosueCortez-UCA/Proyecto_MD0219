@@ -26,7 +26,7 @@ let calcularCoeficiente = (estado, coeficiente, numeros) => {
                 <small class="text-muted">Coeficientes de un binomio elevado a la ${coeficiente} </small>
             </h4>
                 
-            <p class="text-success"> ${numeros} </p>
+            <p class="text-success centrar"> ${numeros} </p>
         `;
     } else {
         objeto_impresion.innerHTML = `
@@ -53,7 +53,7 @@ btn_calcular_app1.addEventListener("click", () => {
     else if (numero/numero) {
         for (let i = 0; i <= numero; i++) {
             resultado.push(
-                (factorial(numero)) / (factorial(i)*factorial(numero-i))
+                `  ${(factorial(numero)) / (factorial(i)*factorial(numero-i))}  `
             );
         }
 
