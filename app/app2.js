@@ -14,6 +14,7 @@ class Letra{
 let calcularArregloLetrasRepetidas = (palabra) => {
     let arrayLetras = [];
     let arraySumas = [];
+    let arrayUnaSolaLetra = [];
     let arrayAux =[];
     let contador = 0;
     let contadorAux = 0; //para saber si no hay repeticion
@@ -63,12 +64,14 @@ let calcularArregloLetrasRepetidas = (palabra) => {
                 }
             }
             
-            if(contador>1){
-               arraySumas.push(arrayLetras[i]);
+            if(contador == 1){
+               arrayUnaSolaLetra.push(arrayLetras[i]);
+            }else if(contador>1){
+                arraySumas.push(arrayLetras[i]);
             }
             contador = 0;
         }
-
+        
         let objetosFinales = [...new Set(arraySumas.map(x => x.nombre))];
        
         for (let i = 0; i < objetosFinales.length; i++) {
@@ -83,6 +86,10 @@ let calcularArregloLetrasRepetidas = (palabra) => {
             }
          }
          
+         for (let i = 0; i < arrayUnaSolaLetra.length; i++) {
+            arrayAux.push(arrayUnaSolaLetra[i]);
+             
+         }
         imprimirDatos(palabraTratada,arrayAux, calcularPermutaciones(arrayAux,palabraTratada));
     }
   
@@ -143,27 +150,33 @@ let imprimirDatos = (palabra, arrayLetras, total) =>{
     let impresion = document.createElement("div");
     let denominadorDatos = "";
     let letrasRepetidas ="";
-    
 
-   
+
     for (let i = 0; i < arrayLetras.length; i++) {
-       if(i+1 == arrayLetras.length){
-        denominadorDatos += arrayLetras[i].valor + "!";
-       }else{
-        denominadorDatos += arrayLetras[i].valor + "!x";
-       }
+        letrasRepetidas += arrayLetras[i].nombre +"="+ arrayLetras[i].valor + "<br/>";
     }
     for (let i = 0; i < arrayLetras.length; i++) {
-      letrasRepetidas += arrayLetras[i].nombre +"="+ arrayLetras[i].valor + "<br/>";
+      if (arrayLetras[i].valor == 1) {
+        console.log(arrayLetras[i]);
+      }
     }
     
+    for (let i = 0; i < arrayLetras.length; i++) {
+        if(i+1 == arrayLetras.length ){
+                denominadorDatos += arrayLetras[i].valor + "!";
+            }else{
+             denominadorDatos += arrayLetras[i].valor + "!x";
+                
+        }
+    }
+   
     impresion.className = "resultado";
     impresion.innerHTML = `
         <hr class="linea_bonita">
         <h4>
             Resultado <br/><br/>
             <small class="text-muted">${letrasRepetidas} <br/></small>
-            <small class="text-muted">Total de Permutaciones con Repetición : ${palabra.length} !/</small>
+            <small class="text-muted">Total de Permutaciones con Repetición :<br/> ${palabra.length} !/</small>
             <small class="text-muted">${denominadorDatos} = </small>
             <p class="text-success"> ${total}</p>
         </h4>
@@ -178,7 +191,7 @@ let imprimirDatos = (palabra, arrayLetras, total) =>{
      calcularArregloLetrasRepetidas(palabraPermutacion.value);
  });
 $(palabraPermutacion).bind('keypress',(e) =>{
-    let regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
+    let regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ]+$");
     let tecla = String.fromCharCode(!e.charCode ? e.which : e.charCode);
     if (!regex.test(tecla)) {
         e.preventDefault();
