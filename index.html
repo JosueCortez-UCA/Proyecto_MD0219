@@ -45,7 +45,7 @@
 
         <!-- App 3 -->
         <div class="card mb-3">
-            <h3 class="card-header">Distribucion Binomial</h3>
+            <h3 class="card-header">Distribución Binomial</h3>
             <div class="card-body">
                 <p class="card-text">Permite calcular la cantidad de aciertos posibles para B(n,p).</p>
                 <a href="https://es.wikipedia.org/wiki/Distribuci%C3%B3n_binomial" class="card-subtitle text-muted">Distribucion binomial</a>    
@@ -57,11 +57,10 @@
 
         <!-- App 4 -->
         <div class="card mb-3">
-            <h3 class="card-header">Card header</h3>
+            <h3 class="card-header">Factorial de un número</h3>
             <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">Calcula el factorial de un número menor o igual a 170</p>
+                <a href="https://www.smartick.es/blog/matematicas/recursos-didacticos/factoriales/" class="card-subtitle text-muted">Factorial de un número</a>    
             </div>
             <div class="card-footer text-muted">
                     <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#App4">Usar</button>
@@ -159,13 +158,18 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">App 4</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Factorial de un número</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <div class="form-group">
+                        <label class="col-form-label" for="factorial">Ingrese un número</label>
+                        <input type="text" class="form-control" placeholder="Ingrese un número" id="factorial">
+                        <br>
+                        <button id="app4-btn" type="button" class="btn btn-primary btn-lg btn-block">Calcular</button>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
