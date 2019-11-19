@@ -25,7 +25,7 @@
             <h3 class="card-header">Coeficientes de un binomio</h3>
             <div class="card-body">
                 <p class="card-text">Calculá los coeficientes de un binomio a la n-ésima potencia en base al triangulo de pascal.</p>
-                <a href="https://es.wikipedia.org/wiki/Tri%C3%A1ngulo_de_Pascal" class="card-subtitle text-muted">Triangulo de pascal</a>
+                <a href="https://es.wikipedia.org/wiki/Tri%C3%A1ngulo_de_Pascal" target="_blank" class="card-subtitle text-muted">Triangulo de pascal</a>
             </div>
             <div class="card-footer text-muted">
                 <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#App1">Usar</button>
@@ -37,7 +37,7 @@
             <h3 class="card-header">Permutaciones con Repetición</h3>
             <div class="card-body">
                 <p class="card-text">Calculá las posibles permutaciones de una palabra haciendo uso de la formula de Permutaciones con Repetición</p>
-                <a href="https://www.sangakoo.com/es/temas/permutaciones-con-repeticion#:~:targetText=Permutaciones%20con%20repetici%C3%B3n,el%20n%C3%BAmero%20de%20veces%20indicado." class="card-subtitle text-muted">Permutaciones con Repetición</a>
+                <a href="https://www.sangakoo.com/es/temas/permutaciones-con-repeticion#:~:targetText=Permutaciones%20con%20repetici%C3%B3n,el%20n%C3%BAmero%20de%20veces%20indicado." target="_blank" class="card-subtitle text-muted">Permutaciones con Repetición</a>
             </div>
             <div class="card-footer text-muted">
                     <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#App2">Usar</button>
@@ -46,10 +46,10 @@
 
         <!-- App 3 -->
         <div class="card mb-3">
-            <h3 class="card-header">Distribución Binomial</h3>
+            <h3 class="card-header">Numero de submatrices de una matriz</h3>
             <div class="card-body">
-                <p class="card-text">Permite calcular la cantidad de aciertos posibles para B(n,p).</p>
-                <a href="https://es.wikipedia.org/wiki/Distribuci%C3%B3n_binomial" class="card-subtitle text-muted">Distribucion binomial</a>    
+                <p class="card-text">Permite calcular el numero de submatrices de orden pxq que se pueden generar apartir de una matriz de orden mxn</p>
+                <a href="https://es.wikipedia.org/wiki/Submatriz" target="_blank" class="card-subtitle text-muted">¿Que son las submatrices?</a>    
             </div>
             <div class="card-footer text-muted">
                     <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#App3">Usar</button>
@@ -61,7 +61,7 @@
             <h3 class="card-header">Factorial de un número</h3>
             <div class="card-body">
                 <p class="card-text">Calcula el factorial de un número menor o igual a 170</p>
-                <a href="https://www.smartick.es/blog/matematicas/recursos-didacticos/factoriales/" class="card-subtitle text-muted">Factorial de un número</a>    
+                <a href="https://www.smartick.es/blog/matematicas/recursos-didacticos/factoriales/" target="_blank" class="card-subtitle text-muted">Factorial de un número</a>    
             </div>
             <div class="card-footer text-muted">
                     <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#App4">Usar</button>
@@ -128,27 +128,28 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Distribucion Binomial</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Numero de submatrices de una matriz</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body" id="resultado_binomial">
-                    <form name="datos">
-                        numero de intentos = <input id = "n" class="form-control-sm" type="text" name="n" size="5">
+                <div class="modal-body">
+                    <div class="form-group" id="form_app3">
+                        <label class="col-form-label">Orden de la matriz original</label>
+                        <input type="text" class="form-control" placeholder="Cantidad de filas" id="n_filas_matriz">
+                        <input type="text" class="form-control" placeholder="Cantidad de columnas" id="n_columnas_matriz">
                         <br>
                         <br>
-                        Probabilidad individual = <input id = "p" class="form-control-sm" type="text" name="p" size="5">
+                        <label class="col-form-label">Orden de las submatrices</label>
+                        <input type="text" class="form-control" placeholder="Cantidad de filas" id="n_filas_submatriz">
+                        <input type="text" class="form-control" placeholder="Cantidad de columnas" id="n_columnas_submatriz">
                         <br>
                         <br>
-                        Aciertos = <input id = "k" class="form-control-sm" type="text" name="k" size="5">
-                        <br>
-                        <hr class="linea_bonita">
-                      
-                        <input class="btn btn-primary btn-lg btn-block" type="button" value="Calcular" onClick="bin()">
-
-                    </form>
-                    <div id="ident_child"></div>
+                        <button id="app3-btn" type="button" class="btn btn-primary btn-lg btn-block">Calcular</button>
+                    </div>
+                    <div class="impresion">
+                        <div id="impresion_app3"></div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>

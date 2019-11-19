@@ -27,3 +27,17 @@ div.titulo>hr{
     color: red;
     text-align: center;
 }
+
+#form_app3 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#form_app3 label {
+    width: 100%;
+}
+
+#form_app3 input[type="text"] {
+    width: 45%;
+}
