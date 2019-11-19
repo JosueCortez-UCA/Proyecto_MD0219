@@ -16,13 +16,11 @@ function bin(){
     }else{
         alert("Debe ingresar numeros.");
     }
-
-    
 }
 
 let calcularDistribucion = (numero) => {
     let resultado = Math.round(numero * 100);
-    
+
     let impresion = document.createElement("div");
     impresion.id = "ident_child";
     impresion.innerHTML = `
