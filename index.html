@@ -131,7 +131,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="resultado_binomial">
                     <form name="datos">
                         numero de intentos = <input id = "n" class="form-control-sm" type="text" name="n" size="5">
                         <br>
@@ -139,11 +139,10 @@
                         Probabilidad individual = <input id = "p" class="form-control-sm" type="text" name="p" size="5">
                         <br>
                         <br>
-                        Aciertos = <input id = "k" class="form-control-sm" type="text" name="k" size="5"><BR><BR><HR>
+                        Aciertos = <input id = "k" class="form-control-sm" type="text" name="k" size="5">
                         <br>
-                        Probabilidad P(x=k) = <input class="form-control-sm"  disabled="disabled" type="text" name="prob">
-                        <br>
-                        <br>
+                        <hr class="linea_bonita">
+                      
                         <input class="btn btn-primary btn-lg btn-block" type="button" value="Calcular" onClick="bin()">
 
                     </form>
