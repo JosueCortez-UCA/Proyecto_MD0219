@@ -15,6 +15,7 @@ let calcularArregloLetrasRepetidas = (palabra) => {
     let arrayLetras = [];
     let arraySumas = [];
     let arrayUnaSolaLetra = [];
+    let arrayMuestraDatos = [];
     let arrayAux =[];
     let contador = 0;
     let contadorAux = 0; //para saber si no hay repeticion
@@ -64,9 +65,7 @@ let calcularArregloLetrasRepetidas = (palabra) => {
                 }
             }
             
-            if(contador == 1){
-               arrayUnaSolaLetra.push(arrayLetras[i]);
-            }else if(contador>1){
+            if(contador>1){
                 arraySumas.push(arrayLetras[i]);
             }
             contador = 0;
@@ -86,10 +85,7 @@ let calcularArregloLetrasRepetidas = (palabra) => {
             }
          }
          
-         for (let i = 0; i < arrayUnaSolaLetra.length; i++) {
-            arrayAux.push(arrayUnaSolaLetra[i]);
-             
-         }
+         
         imprimirDatos(palabraTratada,arrayAux, calcularPermutaciones(arrayAux,palabraTratada));
     }
   
@@ -99,7 +95,7 @@ let calcularPermutaciones = (arrayLetras , palabra) => {
     
     let numerador = calcularFactorial(palabra.length);
     let denominador = 1;
-    let denominadorArray =[];
+   
     let totalPermutaciones = 0;
     for (let i = 0; i < arrayLetras.length; i++) {
 
